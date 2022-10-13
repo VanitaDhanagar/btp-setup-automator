@@ -1,10 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/SAP-samples/btp-setup-automator/main/libs/btpsa-parameters.json",
   "usecasefile": "usecases/released/discoverycenter/3999-kyma-day2-operations/usecase.json",
-  "region": "us10",
-  "subaccountname": "EasyFranchise",
+  "region": "us20",
+  "subaccountname": "btp-kyma-day2-operations",
   "cfspacename": "hana",
-  "loginmethod": "sso",
+  "loginmethod": "envVariables",
   "envvariables": {
     "BTPSA_KYMA_IMAGE_TAG": "main",
     "BTPSA_KYMA_IMAGE_NAME_APPROUTER": "ghcr.io/sap-samples/btp-kyma-day2-operations-approuter",
@@ -22,7 +22,9 @@
   "myusergroups": [
     {
       "name": "admins",
-      "members": [        
+      "members": [
+        "sap-cf-e2etests@sap.com",
+        "vanita.dhanagar@sap.com"
       ]
     }
   ]

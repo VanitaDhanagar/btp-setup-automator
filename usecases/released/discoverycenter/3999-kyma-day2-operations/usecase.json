@@ -14,11 +14,14 @@
         {
             "category": "ENVIRONMENT",
             "name": "kymaruntime",
-            "plan": "free",
+            "plan": "aws",
             "amount": 1,
             "parameters": {
                 "name": "btp-auto-setup",
-                "region": "us-east-1"
+                "region": "eastus",
+                "administrators": ["sap-cf-e2etests@sap.com","vanita.dhanagar@sap.com"]
+
+            
             }
         },
         {
@@ -43,11 +46,11 @@
             "parameters": {
                 "data": {
                     "edition": "cloud",
-                    "memory": 30,
+                    "memory": 32,
                     "serviceStopped": false,
                     "storage": 120,
                     "systempassword": "mySAP123",
-                    "vcpu": 0,
+                    "vcpu": 2,
                     "versionIndicator": "",
                     "whitelistIPs": [
                         "0.0.0.0/0"
@@ -57,7 +60,7 @@
         },
         {
             "name": "cicd-app",
-            "plan": "free",
+            "plan": "default",
             "category": "APPLICATION",
             "repeatstatusrequest": 10,
             "repeatstatustimeout": 120,
@@ -94,7 +97,7 @@
         },
         {
             "description": "Execute customer usercase",
-            "command": "GLOBALACCOUNT=$(jq -r '.\"globalaccount\"' /home/user/log/metadata_log.json) && MYEMAIL=$(jq -r '.\"myemail\"' /home/user/log/metadata_log.json) && SUBACCOUNT=$(jq -r '.\"subaccount\"' /home/user/log/metadata_log.json) && SUBACCOUNTID=$(jq -r '.\"subaccountid\"' /home/user/log/metadata_log.json) && ./btpsa -parameterfile 'usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json' -usecasefile 'usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer.json' -globalaccount $GLOBALACCOUNT -myemail $MYEMAIL -subaccountname CityScooter -customAppProviderSubaccountId $SUBACCOUNTID"            
+            "command": "GLOBALACCOUNT=$(jq -r '.\"globalaccount\"' /home/user/log/metadata_log.json) && MYEMAIL=$(jq -r '.\"myemail\"' /home/user/log/metadata_log.json) && SUBACCOUNT=$(jq -r '.\"subaccount\"' /home/user/log/metadata_log.json) && SUBACCOUNTID=$(jq -r '.\"subaccountid\"' /home/user/log/metadata_log.json) && ./btpsa -parameterfile 'usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json' -usecasefile 'usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer.json' -globalaccount $GLOBALACCOUNT -myemail $MYEMAIL -subaccountname CityTestd -customAppProviderSubaccountId $SUBACCOUNTID -mypassword 'Newpass@123'"            
         }
     ]
 }
