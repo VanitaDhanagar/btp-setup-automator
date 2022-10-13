@@ -14,7 +14,7 @@
         {
             "category": "ENVIRONMENT",
             "name": "kymaruntime",
-            "plan": "aws",
+            "plan": "azure",
             "amount": 1,
             "parameters": {
                 "name": "btp-auto-setup",
