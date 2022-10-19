@@ -24,18 +24,15 @@
                     "assignedUserGroupsFromParameterFile": [
                       "admins"
                     ]
-                  }                
+                  } ,
+                  {
+                    "name": "Subaccount Administrator",
+                    "assignedUserGroupsFromParameterFile": [
+                      "admins"
+                    ]
+                  }
+
             ]
         }
-    ],
-    "assignrolecollections": [
-        {
-            "name": "Subaccount Administrator",
-            "type": "account",
-            "level": "sub account",
-            "assignedUserGroupsFromParameterFile": [
-              "admins"
-            ]
-          }
-        ]
+    ]
 }
