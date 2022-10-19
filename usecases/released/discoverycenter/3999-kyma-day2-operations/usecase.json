@@ -73,7 +73,7 @@
                   }                
             ]
         }
-    ],       
+    ], 
     "executeAfterAccountSetup": [                
         {
             "description": "Get the tutorial code",
@@ -99,5 +99,24 @@
             "description": "Execute customer usercase",
             "command": "GLOBALACCOUNT=$(jq -r '.\"globalaccount\"' /home/user/log/metadata_log.json) && MYEMAIL=$(jq -r '.\"myemail\"' /home/user/log/metadata_log.json) && SUBACCOUNT=$(jq -r '.\"subaccount\"' /home/user/log/metadata_log.json) && SUBACCOUNTID=$(jq -r '.\"subaccountid\"' /home/user/log/metadata_log.json) && ./btpsa -parameterfile 'usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json' -usecasefile 'usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer.json' -globalaccount $GLOBALACCOUNT -myemail $MYEMAIL -subaccountname day2customer -customAppProviderSubaccountId $SUBACCOUNTID -mypassword 'RanjitApp@12345'"            
         }
+    ],
+    "assignrolecollections": [
+        {
+            "name": "Subaccount Administrator",
+            "type": "account",
+            "level": "sub account",
+            "assignedUserGroupsFromParameterFile": [
+              "admins"
+            ]
+          },
+          {
+            "name": "Subaccount Administrator",
+            "type": "account",
+            "level": "sub account",
+            "assignedUserGroupsFromParameterFile": [
+              "admins"
+            ]
+          }
+
     ]
 }
