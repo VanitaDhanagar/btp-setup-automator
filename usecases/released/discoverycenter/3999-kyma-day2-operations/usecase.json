@@ -93,7 +93,7 @@
         },
         {
             "description": "Create the customer usecasefile",
-            "command": "rm /home/user/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer.json -f && SUBDOMAIN=$(jq -r '.\"subdomain\"' /home/user/log/metadata_log.json) && sed \"s~<provider-subdomain>~$SUBDOMAIN~g\" \"/home/user/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer-template.json\" >> \"/home/user/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer.json\""            
+            "command": "rm /home/user/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer.json -f && SUBDOMAIN=$(jq -r '.\"subdomain\"' /home/user/log/metadata_log.json) && sed \"s~<provider-subdomain>~$SUBDOMAIN~g\" \"https://raw.githubusercontent.com/VanitaDhanagar/btp-setup-automator/main/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer-template.json\" >> \"/home/user/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer.json\""            
         },
         {
             "description": "Execute customer usercase",
