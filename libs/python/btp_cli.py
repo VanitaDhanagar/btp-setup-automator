@@ -4,9 +4,9 @@ from libs.python.helperFolders import FOLDER_SCHEMA_LIBS
 from libs.python.helperJson import addKeyValuePair, dictToString, convertStringToJson, getJsonFromFile
 from libs.python.helperBtpTrust import runTrustFlow
 from libs.python.helperCommandExecution import executeCommandsFromUsecaseFile, runShellCommand, runCommandAndGetJsonResult, runShellCommandFlex, login_btp, login_cf
-from libs.python.helperEnvCF import checkIfCFEnvironmentAlreadyExists, checkIfCFSpaceAlreadyExists, try_until_cf_space_done, try_until_space_quota_created
+from libs.python.helperEnvCF import checkIfCFEnvironmentAlreadyExists, checkIfCFSpaceAlreadyExists, getCfApiEndpointByUseCase, getCfApiEndpointFromLabels, try_until_cf_space_done, try_until_space_quota_created
 from libs.python.helperServiceInstances import createServiceKey, deleteServiceInstance, deleteServiceKeysAndWait, getServiceDeletionStatus, initiateCreationOfServiceInstances, checkIfAllServiceInstancesCreated
-from libs.python.helperGeneric import buildUrltoSubaccount, getNamingPatternForServiceSuffix, createSubaccountName, createSubdomainID, createOrgName, save_collected_metadata
+from libs.python.helperGeneric import buildUrltoSubaccount, getNamingPatternForServiceSuffix, createDirectoryName, createSubaccountName, createSubdomainID, createOrgName, save_collected_metadata
 from libs.python.helperFileAccess import writeKubeConfigFileToDefaultDir
 from libs.python.helperEnvKyma import extractKymaDashboardUrlFromEnvironmentDataEntry, getKymaEnvironmentInfoByClusterName, getKymaEnvironmentStatusFromEnvironmentDataEntry, extractKymaKubeConfigUrlFromEnvironmentDataEntry, getKymaEnvironmentIdByClusterName
 
@@ -113,6 +113,83 @@ class BTPUSECASE:
             else:
                 log.success("Use case supported in your global account!")
 
+    def create_directory(self):
+
+        if self.usedirectory is False:
+            # Do not create a directory for the use case
+            return
+
+        accountMetadata = self.accountMetadata
+        directoryid = self.directoryid
+        self.accountMetadata = addKeyValuePair(
+            accountMetadata, "directoryid", directoryid)
+
+        if "directoryid" not in accountMetadata or accountMetadata["directoryid"] == "" or accountMetadata["directoryid"] is None:
+
+            log.warning(
+                "no directory id provided and tool will make up one for you")
+
+            directory = createDirectoryName(self)
+
+            log.success("using directory name >" + directory + "<")
+
+            globalAccount = self.globalaccount
+
+            log.header("Create directory >" + directory +
+                       "< (if not already existing)")
+
+            directoryid = checkIfDirectoryAlreadyExists(self)
+
+            globalAccount = self.globalaccount
+
+            if directoryid is None:
+                command = "btp --format json create accounts/directory  \
+                    --display-name '" + directory + "' \
+                    --global-account '" + globalAccount + "'"
+
+                message = "Create directory >" + directory + "<"
+
+                result = runCommandAndGetJsonResult(
+                    self, command, "INFO", message)
+
+                directoryid = result["guid"]
+
+                # Wait until the directory has been created
+                command = "btp --format json get accounts/directory '" + \
+                    directoryid + "' --global-account '" + globalAccount + "'"
+                result = try_until_done(
+                    self, command, message, "entityState", "OK", self.repeatstatusrequest, 100)
+                if result == "ERROR":
+                    log.error("Something went wrong while waiting for the directory >" +
+                              directory + "< with id >" + directoryid + "<")
+
+                log.success("created directory >" + directory +
+                            "< with id >" + directoryid + "<")
+            else:
+                log.success("directory >" + directory +
+                            "< already exists with id >" + directoryid + "<")
+                self.directoryid = directoryid
+
+            self.accountMetadata = addKeyValuePair(
+                accountMetadata, "directoryid", directoryid)
+            self.directoryid = directoryid
+        else:
+            log.header("USING CONFIGURED DIRECTORY WITH ID >" +
+                       self.directoryid + "<")
+            if self.directoryname and self.rundefaulttests is False:
+                self.accountMetadata = addKeyValuePair(
+                    accountMetadata, "directory", self.directoryname)
+            else:
+                if self.directoryname:
+                    self.accountMetadata = addKeyValuePair(
+                        accountMetadata, "directory", self.directoryname)
+                else:
+                    result = getDetailsAboutDirectory(self, self.directoryid)
+                    self.accountMetadata = addKeyValuePair(
+                        accountMetadata, "directory", result["displayName"])
+
+        save_collected_metadata(self)
+
     def assignUsersToSubaccountAndRoles(self):
         assignUsersToGlobalAndSubaccount(self)
         assignUsersToEnvironments(self)
@@ -213,6 +290,10 @@ class BTPUSECASE:
         self.accountMetadata = addKeyValuePair(
             accountMetadata, "subaccountid", subaccountid)
 
+        directoryid = None
+        if self.usedirectory is True:
+            directoryid = accountMetadata["directoryid"]
+
         if "subaccountid" not in accountMetadata or accountMetadata["subaccountid"] == "" or accountMetadata["subaccountid"] is None:
 
             log.warning(
@@ -241,6 +322,11 @@ class BTPUSECASE:
                     --subaccount-admins '" + subaccountadmins + "'"
 
                 message = "Create sub account >" + subaccount + "<"
+
+                if directoryid is not None and directoryid != "":
+                    command = command + " --directory '" + directoryid + "'"
+                    message = message + " in directory >" + directoryid + "<"
+
                 result = runCommandAndGetJsonResult(
                     self, command, "INFO", message)
 
@@ -346,6 +432,8 @@ class BTPUSECASE:
                         if labels.get("Org ID"):
                             orgid = labels.get("Org ID")
 
+                        cfApiEndpoint = getCfApiEndpointFromLabels(labels)
+
                         # Wait until the org has been created
                         message = "is CF environment >" + org + "< created"
                         command = "btp --format json get accounts/environment-instance '" + \
@@ -367,6 +455,9 @@ class BTPUSECASE:
                         self.accountMetadata = addKeyValuePair(
                             accountMetadata, "org", org)
 
+                        self.accountMetadata = addKeyValuePair(
+                            accountMetadata, "cfapiendpoint", cfApiEndpoint)
+
                         save_collected_metadata(self)
                         self.create_new_cf_space(environment)
                         self.create_and_assign_quota_plan(environment)
@@ -374,12 +465,16 @@ class BTPUSECASE:
                     else:
                         log.success("CF environment >" + org +
                                     "< already available with id >" + orgid + "<")
+
+                        cfApiEndpoint = getCfApiEndpointByUseCase(self)
                         self.orgid = orgid
                         self.org = org
                         self.accountMetadata = addKeyValuePair(
                             accountMetadata, "orgid", orgid)
                         self.accountMetadata = addKeyValuePair(
                             accountMetadata, "org", org)
+                        self.accountMetadata = addKeyValuePair(
+                            accountMetadata, "cfapiendpoint", cfApiEndpoint)
                         save_collected_metadata(self)
                         self.create_new_cf_space(environment)
                         self.create_and_assign_quota_plan(environment)
@@ -600,7 +695,8 @@ class BTPUSECASE:
                 command = "cf set-space-quota " + \
                     self.accountMetadata["cfspacename"] + " " + \
                     self.cfspacequota.get("spaceQuotaName")
-                runShellCommand(self, command, "INFO", "assign cf space quota to space")
+                runShellCommand(self, command, "INFO",
+                                "assign cf space quota to space")
 
     def createRoleCollections(self):
         assignUsersToRoleCollectionsForServices(self)
@@ -831,6 +927,25 @@ def checkIfSubaccountAlreadyExists(btpUsecase: BTPUSECASE):
         return None
 
 
+def checkIfDirectoryAlreadyExists(btpUsecase: BTPUSECASE):
+    accountMetadata = btpUsecase.accountMetadata
+
+    command = "btp --format json get accounts/global-account --global-account '" + \
+        btpUsecase.globalaccount + "' --show-hierarchy"
+    result = runCommandAndGetJsonResult(btpUsecase, command, "INFO", None)
+
+    if "directory" in accountMetadata:
+        directoryName = accountMetadata["directory"]
+
+        if result["children"]:
+            for entry in result["children"]:
+                if entry["displayName"] == directoryName:
+                    return entry["guid"]
+
+    # We did not find anything, so return None
+    return None
+
+
 def getListOfAvailableServicesAndApps(btpUsecase: BTPUSECASE):
     globalaccount = btpUsecase.globalaccount
     usecaseRegion = btpUsecase.region
@@ -892,6 +1007,13 @@ def get_globalaccount_details(btpUsecase: BTPUSECASE):
     return metadata
 
 
+def getDetailsAboutDirectory(btpUsecase: BTPUSECASE, directoryid):
+    command = "btp --format json get accounts/directory '" + \
+        directoryid + "' --global-account '" + btpUsecase.globalaccount + "'"
+    result = runCommandAndGetJsonResult(btpUsecase, command, "INFO", None)
+    return result
+
+
 def getDetailsAboutSubaccount(btpUsecase: BTPUSECASE, subaccountid):
     command = "btp --format json get accounts/subaccount '" + \
         subaccountid + "' --global-account '" + btpUsecase.globalaccount + "'"
@@ -942,7 +1064,7 @@ def assign_entitlement(btpUsecase: BTPUSECASE, service):
 
     if returnCode != 0:
         log.warning(
-            "this entitlement wasn't sucesssfull. Trying to entitle with amount parameter instead.")
+            "this entitlement wasn't successful. Trying to entitle with amount parameter instead.")
 
         if service.amount is not None and service.amount > 0:
             command = baseCommand + " --auto-distribute-amount " + \
@@ -1123,30 +1245,32 @@ def checkIfAllSubscriptionsAreAvailable(btpUsecase: BTPUSECASE):
 
     allSubscriptionsAvailable = True
     for app in btpUsecase.definedAppSubscriptions:
-        for thisJson in resultCommand["applications"]:
-            name = thisJson.get("appName")
-            plan = thisJson.get("planName")
-            status = thisJson.get("state")
-            tenantId = thisJson.get("tenantId")
 
-            if app.name == name and app.plan == plan and app.successInfoShown is False:
-                if status == "SUBSCRIBE_FAILED":
-                    log.error(
-                        "BTP account reported that subscription on >" + app.name + "< has failed.")
-                    sys.exit(os.EX_DATAERR)
+        if app.entitleonly is False:
+            for thisJson in resultCommand["applications"]:
+                name = thisJson.get("appName")
+                plan = thisJson.get("planName")
+                status = thisJson.get("state")
+                tenantId = thisJson.get("tenantId")
 
-                if status != "SUBSCRIBED":
-                    allSubscriptionsAvailable = False
-                    app.status = status
-                    app.successInfoShown = False
-                    app.statusResponse = thisJson
-                else:
-                    log.success("subscription to app >" + app.name +
-                                "< (plan " + app.plan + ") is now available")
-                    app.tenantId = tenantId
-                    app.successInfoShown = True
-                    app.statusResponse = thisJson
-                    app.status = "SUBSCRIBED"
+                if app.name == name and app.plan == plan and app.successInfoShown is False:
+                    if status == "SUBSCRIBE_FAILED":
+                        log.error(
+                            "BTP account reported that subscription on >" + app.name + "< has failed.")
+                        sys.exit(os.EX_DATAERR)
+
+                    if status != "SUBSCRIBED":
+                        allSubscriptionsAvailable = False
+                        app.status = status
+                        app.successInfoShown = False
+                        app.statusResponse = thisJson
+                    else:
+                        log.success("subscription to app >" + app.name +
+                                    "< (plan " + app.plan + ") is now available")
+                        app.tenantId = tenantId
+                        app.successInfoShown = True
+                        app.statusResponse = thisJson
+                        app.status = "SUBSCRIBED"
 
     return allSubscriptionsAvailable
 
@@ -1174,9 +1298,11 @@ def track_creation_of_subscriptions_and_services(btpUsecase: BTPUSECASE):
         areAllInstancesCreated = True
         areAllSubscriptionsCreated = True
 
+        search_every_x_seconds = determineTimeToFetchStatusUpdates(btpUsecase)
+
         if len(btpUsecase.definedServices) > 0:
             areAllInstancesCreated = checkIfAllServiceInstancesCreated(
-                btpUsecase)
+                btpUsecase, search_every_x_seconds)
 
         if len(btpUsecase.definedAppSubscriptions) > 0:
             areAllSubscriptionsCreated = checkIfAllSubscriptionsAreAvailable(
@@ -1188,7 +1314,6 @@ def track_creation_of_subscriptions_and_services(btpUsecase: BTPUSECASE):
             accountMetadata = addCreatedServicesToMetadata(btpUsecase)
             return accountMetadata
 
-        search_every_x_seconds = determineTimeToFetchStatusUpdates(btpUsecase)
         time.sleep(search_every_x_seconds)
         current_time += search_every_x_seconds
 
@@ -1349,6 +1474,10 @@ def pruneUseCaseAssets(btpUsecase: BTPUSECASE):
                              service["name"] + "<. Deletion not needed.")
                     continue
 
+                if service["deletionStatus"] == "deleted":
+                    # Avoid multiple checks for the same service when already deleted
+                    continue
+
                 status = getServiceDeletionStatus(service, btpUsecase)
 
                 if (status == "delete failed"):
@@ -1370,7 +1499,10 @@ def pruneUseCaseAssets(btpUsecase: BTPUSECASE):
                         "service instance >" + service["instancename"] + "< for service >" + service["name"] + "< now deleted.")
                     service["deletionStatus"] = "deleted"
                 else:
+                    log.info("service instance >" + service["instancename"] + "< for service >" + service["name"] +
+                             "< not yet deleted. Checking again in " + str(search_every_x_seconds) + " seconds.")
                     service["deletionStatus"] = status
+
             time.sleep(search_every_x_seconds)
             current_time += search_every_x_seconds
             allServicesDeleted = True
@@ -1478,9 +1610,14 @@ def selectEnvironmentLandscape(btpUsecase: BTPUSECASE, environment):
                 environmentType = item["environmentType"]
                 if "landscapeLabel" not in item:
                     return None
-                # Simply take the first landscape that is found, matching the environment and the plan
                 if environment.plan == servicePlan and environment.name == environmentType:
-                    return item["landscapeLabel"]
+                    if btpUsecase.cfLandscape is None:
+                        # if no landscape was defined in parameters.json, take the first landscape that is found, matching the environment and the plan
+                        return item["landscapeLabel"]
+                    elif btpUsecase.cfLandscape is not None and btpUsecase.cfLandscape == item["landscapeLabel"]:
+                        # if landscape was defined in parameters.json, take the entry matching the environment, plan and landsacpe
+                        return item["landscapeLabel"]
+
         time.sleep(search_every_x_seconds)
         current_time += search_every_x_seconds
 

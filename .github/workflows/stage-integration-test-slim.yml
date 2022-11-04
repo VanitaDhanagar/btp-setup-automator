@@ -45,7 +45,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
       - name: Build Docker image
         id: dockerbuild
-        uses: docker/build-push-action@v3.1.1
+        uses: docker/build-push-action@v3.2.0
         with:
           context: .
           file: ./config/Dockerfile
@@ -54,11 +54,9 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-      #HACKHACKHACK: The image path in the next step cannot be dynamically fetched due to context visibility (env not visible)
-      # We therefore use the output parameters which can be referenced via needs
       - id: set-image-path
         name: Set image path to output
-        run: echo "::set-output name=image_path::${{ fromJSON(steps.dockerbuild.outputs.metadata)['image.name'] }}"
+        run: echo "image_path=${{ fromJSON(steps.dockerbuild.outputs.metadata)['image.name'] }}" >> $GITHUB_OUTPUT
 
   integration-test-for-pr-slim:
     needs: build-temporary-image
