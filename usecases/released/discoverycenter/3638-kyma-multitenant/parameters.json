@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/SAP-samples/btp-setup-automator/main/libs/btpsa-parameters.json",
-  "usecasefile": "usecases/released/discoverycenter/3638-kyma-multitenant/usecase.json",
+  "usecasefile": "https://raw.githubusercontent.com/VanitaDhanagar/btp-setup-automator/main/usecases/released/discoverycenter/3638-kyma-multitenant/usecase.json",
   "region": "us20",
-  "subaccountname": "btp-kyma-multitenant-extension",
+  "subaccountname": "kyma-base-mission-automation",
   "cfspacename": "hana",
   "loginmethod": "envVariables",
   "envvariables": {        
@@ -14,5 +14,13 @@
     "BTPSA_KYMA_IMAGE_NAME_EMAIL_SERVICE": "ghcr.io/sap-samples/btp-kyma-multitenant-extension-email-service:main",
     "BTPSA_KYMA_IMAGE_NAME_UI": "ghcr.io/sap-samples/btp-kyma-multitenant-extension-ui:main",
     "BTPSA_KYMA_IMAGE_NAME_BUSINESS_PARTNER_MOCK": "ghcr.io/sap-samples/btp-kyma-multitenant-extension-business-partner-mock:main"  
-  }
+  },
+  "myusergroups": [
+    {
+      "name": "admins",
+      "members": [
+        "sap-cf-e2etests@sap.com"
+      ]
+    }
+  ]
 }

@@ -24,6 +24,12 @@
                     "assignedUserGroupsFromParameterFile": [
                       "admins"
                     ]
+                  },
+                  {
+                    "name": "Subaccount Administrator",
+                    "assignedUserGroupsFromParameterFile": [
+                      "admins"
+                    ]
                   }                
             ]
         }
