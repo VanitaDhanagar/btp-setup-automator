@@ -19,7 +19,7 @@
             "parameters": {
                 "name": "btp-auto-setup",
                 "region": "eastus",
-                "administrators": ["sap-cf-e2etests@sap.com"]
+                "administrators": ["sap-cf-e2etests@sap.com","vanita.dhanagar@sap.com"]
 
             
             }
