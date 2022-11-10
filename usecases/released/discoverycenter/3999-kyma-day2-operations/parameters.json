@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/SAP-samples/btp-setup-automator/main/libs/btpsa-parameters.json",
   "usecasefile": "https://raw.githubusercontent.com/VanitaDhanagar/btp-setup-automator/main/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase.json",
   "region": "us20",
-  "subaccountname": "kyma-day2-providerautomation1",
+  "subaccountname": "kyma-day2-providerautomation2",
   "cfspacename": "hana",
   "loginmethod": "envVariables",
   "envvariables": {
