@@ -38,7 +38,7 @@
         },
         {
             "name": "hana-cloud",
-            "plan": "hana-free",
+            "plan": "hana",
             "category": "SERVICE",
             "repeatstatusrequest": 60,
             "repeatstatustimeout": 3600,
