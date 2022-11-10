@@ -18,6 +18,9 @@ This includes:
 - Deployment of complete applications
 - Unrolling created setup
 
+> Get a quick overview & demo of the btp-setup-automator through this video:
+[![Ask-the-expert video recording](https://img.youtube.com/vi/3pLNXsn-cLM/0.jpg)](https://www.youtube.com/watch?v=3pLNXsn-cLM)
+
 ## Configuration
 
 As a developer you configure your use case inside a `usecase.json` file with all services and subscriptions that you need (find some sample [use cases here](./usecases/released) including [their detailed descriptions](./docs/USECASES.md)). The [JSON schema **btpsa-usecase.json**](./libs/btpsa-usecase.json) makes it fairly simple to create your own use case file as you can see in this video:
@@ -152,7 +155,7 @@ You can run the container directly via the terminal or within VS Code, modify us
 
 If you want a more detailed walk-through guiding you through the first steps with the btp-setup-automator and VS Code, then this video on YouTube is worth a look:
 
-[![Watch the intro video on the btp-setup-automator](docs/pics/btp-setup-automator-intro-video.png)](https://youtu.be/BHBgQ45fgIk)
+[![Watch the intro video on the btp-setup-automator](https://img.youtube.com/vi/BHBgQ45fgIk/0.jpg)](https://www.youtube.com/watch?v=BHBgQ45fgIk)
 
 ### From a terminal
 

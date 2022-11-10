@@ -97,7 +97,7 @@
         },
         {
             "description": "Execute customer usercase",
-            "command": "GLOBALACCOUNT=$(jq -r '.\"globalaccount\"' /home/user/log/metadata_log.json) && MYEMAIL=$(jq -r '.\"myemail\"' /home/user/log/metadata_log.json) && SUBACCOUNT=$(jq -r '.\"subaccount\"' /home/user/log/metadata_log.json) && SUBACCOUNTID=$(jq -r '.\"subaccountid\"' /home/user/log/metadata_log.json) && ./btpsa -parameterfile 'usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json' -usecasefile 'usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer.json' -globalaccount $GLOBALACCOUNT -myemail $MYEMAIL -subaccountname day2customer -customAppProviderSubaccountId $SUBACCOUNTID -mypassword 'RanjitApp@12345'"            
+            "command": "GLOBALACCOUNT=$(jq -r '.\"globalaccount\"' /home/user/log/metadata_log.json) && MYEMAIL=$(jq -r '.\"myemail\"' /home/user/log/metadata_log.json) && SUBACCOUNT=$(jq -r '.\"subaccount\"' /home/user/log/metadata_log.json) && SUBACCOUNTID=$(jq -r '.\"subaccountid\"' /home/user/log/metadata_log.json) && ./btpsa -parameterfile 'usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json' -usecasefile 'usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer.json' -globalaccount $GLOBALACCOUNT -myemail 'sap-cf-e2etests@sap.com' -subaccountname day2customer -customAppProviderSubaccountId $SUBACCOUNTID -mypassword 'Newpass@123'"            
         }
     ],
     "assignrolecollections": [
