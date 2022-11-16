@@ -19,8 +19,7 @@
     {
       "name": "admins",
       "members": [
-        "sap-cf-e2etests@sap.com",
-        "vanita.dhanagar@sap.com"
+        "sap-cf-e2etests@sap.com"
       ]
     }
   ]
