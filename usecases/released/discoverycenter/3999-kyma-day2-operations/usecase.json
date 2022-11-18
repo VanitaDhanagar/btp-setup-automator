@@ -92,6 +92,10 @@
             "command": "/home/user/tutorial/btpsa-deployment.sh"            
         },
         {
+          "description": "Execute customerday2 role usercase",
+          "command": "./btpsa -parameterfile 'https://raw.githubusercontent.com/VanitaDhanagar/btp-setup-automator/main/usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json' -usecasefile 'usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-day2role.json' -globalaccount $GLOBALACCOUNT -myemail 'sap-cf-e2etests@sap.com' -mypassword 'Initial234!'"            
+      },
+        {
             "description": "Create the customer usecasefile",
             "command": "rm /home/user/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer.json -f && SUBDOMAIN=$(jq -r '.\"subdomain\"' /home/user/log/metadata_log.json) && sed \"s~<provider-subdomain>~$SUBDOMAIN~g\" \"/home/user/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer-template.json\" >> \"/home/user/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase-customer.json\""            
         },
@@ -103,14 +107,6 @@
     "assignrolecollections": [
         {
             "name": "Subaccount Administrator",
-            "type": "account",
-            "level": "sub account",
-            "assignedUserGroupsFromParameterFile": [
-              "admins"
-            ]
-          },
-          {
-            "name": "Easy Franchise Day 2 Operator",
             "type": "account",
             "level": "sub account",
             "assignedUserGroupsFromParameterFile": [
