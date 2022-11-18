@@ -110,6 +110,14 @@
             ]
           },
           {
+            "name": "Easy Franchise Day 2 Operator",
+            "type": "account",
+            "level": "sub account",
+            "assignedUserGroupsFromParameterFile": [
+              "admins"
+            ]
+          },
+          {
             "name": "Subaccount Service Administrator",
             "type": "account",
             "level": "sub account",
