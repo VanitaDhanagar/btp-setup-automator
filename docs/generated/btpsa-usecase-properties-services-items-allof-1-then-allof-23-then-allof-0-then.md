@@ -10,7 +10,7 @@ unknown
 
 ## plan
 
-service plan >free< for >credstore< is available in data centers:
+service plan >connectivity\_proxy< for >connectivity< is available in data centers:
 
 *   {'region': 'ap10', 'name': 'Australia (Sydney)'}
 *   {'region': 'ap11', 'name': 'Singapore'}

@@ -41,7 +41,7 @@ unknown
 
 ## name
 
-Mobile Connectivity Service: Mobile Connectivity Service
+Mobile Client Log Upload Service: Mobile Client Log Upload Service
 
 `name`
 

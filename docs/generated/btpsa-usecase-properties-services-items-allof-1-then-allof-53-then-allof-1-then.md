@@ -10,10 +10,10 @@ unknown
 
 ## plan
 
-service plan >free< for >market-rates-byor< is available in data centers:
+service plan >standard< for >iotae< is available in data centers:
 
 *   {'region': 'eu10', 'name': 'Europe (Frankfurt)'}
-*   {'region': 'us10', 'name': 'US East (VA)'}
+*   {'region': 'eu20', 'name': 'Europe (Netherlands)'}
 
 `plan`
 

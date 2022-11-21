@@ -10,17 +10,9 @@ unknown
 
 ## plan
 
-service plan >free< for >data-analytics-osb< is available in data centers:
+service plan >connectivity\_proxy< for >connectivity-central< is available in data centers:
 
-*   {'region': 'ap10', 'name': 'Australia (Sydney)'}
-*   {'region': 'ap11', 'name': 'Singapore'}
-*   {'region': 'ap12', 'name': 'South Korea (Seoul)'}
-*   {'region': 'br10', 'name': 'Brazil (Sao Paulo)'}
-*   {'region': 'ca10', 'name': 'Canada (Montreal)'}
 *   {'region': 'eu10', 'name': 'Europe (Frankfurt)'}
-*   {'region': 'eu11', 'name': 'Europe (Frankfurt) EU Access - AWS'}
-*   {'region': 'jp10', 'name': 'Japan (Tokyo)'}
-*   {'region': 'us10', 'name': 'US East (VA)'}
 
 `plan`
 

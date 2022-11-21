@@ -37,14 +37,14 @@ unknown
 
 **enum**: the value of this property must be equal to one of the following values:
 
-| Value            | Explanation |
-| :--------------- | :---------- |
-| `"professional"` |             |
-| `"starter"`      |             |
+| Value        | Explanation |
+| :----------- | :---------- |
+| `"free"`     |             |
+| `"standard"` |             |
 
 ## name
 
-SAP HANA spatial services: HANA Spatial Services
+Launchpad Service: SAP Launchpad service provides users with a central point of access to applications from different sources. Note: this service is being renamed to SAP Build Work Zone, standard edition in January 2023.
 
 `name`
 

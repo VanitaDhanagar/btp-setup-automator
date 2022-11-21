@@ -10,7 +10,7 @@ unknown
 
 ## plan
 
-service plan >lite< for >spatialservices< is available in data centers:
+service plan >free< for >sap-graph< is available in data centers:
 
 *   {'region': 'eu10', 'name': 'Europe (Frankfurt)'}
 *   {'region': 'us10', 'name': 'US East (VA)'}

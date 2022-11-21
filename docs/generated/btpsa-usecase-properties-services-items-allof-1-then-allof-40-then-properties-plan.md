@@ -8,5 +8,7 @@ unknown
 
 | Value           | Explanation |
 | :-------------- | :---------- |
-| `"app-host"`    |             |
-| `"app-runtime"` |             |
+| `"hdi-shared"`  |             |
+| `"sbss"`        |             |
+| `"schema"`      |             |
+| `"securestore"` |             |

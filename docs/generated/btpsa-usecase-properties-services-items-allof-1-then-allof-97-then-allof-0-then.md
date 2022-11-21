@@ -10,10 +10,9 @@ unknown
 
 ## plan
 
-service plan >default< for >sap-calm< is available in data centers:
+service plan >beta< for >responsibility-management-service-beta< is available in data centers:
 
 *   {'region': 'eu10', 'name': 'Europe (Frankfurt)'}
-*   {'region': 'eu20', 'name': 'Europe (Netherlands)'}
 
 `plan`
 

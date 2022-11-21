@@ -41,16 +41,16 @@ unknown
 
 **enum**: the value of this property must be equal to one of the following values:
 
-| Value      | Explanation |
-| :--------- | :---------- |
-| `"large"`  |             |
-| `"medium"` |             |
-| `"small"`  |             |
-| `"xsmall"` |             |
+| Value                     | Explanation |
+| :------------------------ | :---------- |
+| `"advanced-user"`         |             |
+| `"automation-attended"`   |             |
+| `"automation-unattended"` |             |
+| `"standard-user"`         |             |
 
 ## name
 
-Redis on SAP BTP: Redis on SAP BTP offers an in-memory data structure store that you can use as a cache, database, or message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets, and so on.
+SAP Build Process Automation: SAP Build Process Automation is a citizen development solution to adapt, improve, and innovate business processes with the low-code/no-code capabilities of SAP Workflow Management and SAP Intelligent RPA.
 
 `name`
 

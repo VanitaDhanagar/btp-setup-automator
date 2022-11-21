@@ -8,6 +8,10 @@ all of
 
 *   [Untitled undefined type in JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-40-then-allof-1.md "check type definition")
 
+*   [Untitled undefined type in JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-40-then-allof-2.md "check type definition")
+
+*   [Untitled undefined type in JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-40-then-allof-3.md "check type definition")
+
 # then Properties
 
 | Property      | Type          | Required | Nullable       | Defined by                                                                                                                                                                                                            |
@@ -39,12 +43,14 @@ unknown
 
 | Value           | Explanation |
 | :-------------- | :---------- |
-| `"app-host"`    |             |
-| `"app-runtime"` |             |
+| `"hdi-shared"`  |             |
+| `"sbss"`        |             |
+| `"schema"`      |             |
+| `"securestore"` |             |
 
 ## name
 
-SAP HTML5 Application Repository service for SAP BTP: The HTML5 Application Repository service enables central storage of HTML5 applications in SAP BTP. In runtime, the service enables the consuming application, typically the application router, to access HTML5 application static content in a secure and efficient manner.
+SAP HANA Schemas & HDI Containers: Use the SAP HANA schemas & HDI containers service to create service instances on SAP HANA databases and bind them to cloud applications. To create schemas and HDI containers, an SAP HANA database must be available in your space. The SAP HANA schemas & HDI containers service is part of the SAP HANA service.
 
 `name`
 

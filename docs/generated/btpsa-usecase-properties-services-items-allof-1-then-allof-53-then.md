@@ -37,14 +37,14 @@ unknown
 
 **enum**: the value of this property must be equal to one of the following values:
 
-| Value       | Explanation |
-| :---------- | :---------- |
-| `"default"` |             |
-| `"free"`    |             |
+| Value        | Explanation |
+| :----------- | :---------- |
+| `"default"`  |             |
+| `"standard"` |             |
 
 ## name
 
-SAP Market Rates Management: The Market Rates Management, Bring Your Own Rates data option allows you to upload and download your own market rates licensed from third party data providers
+SAP IoT Application Enablement: SAP IoT business services allow you to put raw sensor data into business object context and then use query models, rules, events and actions to leverage the data near real-time in analytical or transactional business applications.
 
 `name`
 
