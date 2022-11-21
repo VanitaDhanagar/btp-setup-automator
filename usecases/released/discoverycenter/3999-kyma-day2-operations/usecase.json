@@ -126,8 +126,7 @@
             "type": "cloudfoundry",
             "level": "space",
             "assignedUserGroupsFromParameterFile": [
-              "admins",
-              "developers"
+              "admins"
             ]
           },
           {
@@ -135,8 +134,7 @@
             "type": "cloudfoundry",
             "level": "space",
             "assignedUserGroupsFromParameterFile": [
-              "admins",
-              "developers"
+              "admins"
             ]
           },
           {
@@ -144,8 +142,7 @@
             "type": "cloudfoundry",
             "level": "space",
             "assignedUserGroupsFromParameterFile": [
-              "admins",
-              "developers"
+              "admins"
             ]
           },
           {
@@ -153,8 +150,8 @@
             "type": "cloudfoundry",
             "level": "org",
             "assignedUserGroupsFromParameterFile": [
-              "admins",
-              "testers"
+              "admins"
+              
             ]
           },
           {
@@ -162,8 +159,8 @@
             "type": "cloudfoundry",
             "level": "org",
             "assignedUserGroupsFromParameterFile": [
-              "admins",
-              "auditors"
+              "admins"
+              
             ]
           }
 
