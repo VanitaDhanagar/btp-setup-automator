@@ -35,13 +35,13 @@ unknown
 
 **enum**: the value of this property must be equal to one of the following values:
 
-| Value        | Explanation |
-| :----------- | :---------- |
-| `"standard"` |             |
+| Value           | Explanation |
+| :-------------- | :---------- |
+| `"application"` |             |
 
 ## name
 
-SAP Work Zone, data storage add-on: SAP Work Zone centralizes access to relevant business applications, processes, information, and communication in a unified entry point that users can access from any device.
+SAP Software-as-a-Service Provisioning service: Service for application providers to register multitenant applications and services.
 
 `name`
 

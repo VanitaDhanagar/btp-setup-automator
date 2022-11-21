@@ -10,7 +10,7 @@ unknown
 
 ## plan
 
-service plan >app-host< for >html5-apps-repo< is available in data centers:
+service plan >hdi-shared< for >hana< is available in data centers:
 
 *   {'region': 'ap10', 'name': 'Australia (Sydney)'}
 *   {'region': 'ap11', 'name': 'Singapore'}

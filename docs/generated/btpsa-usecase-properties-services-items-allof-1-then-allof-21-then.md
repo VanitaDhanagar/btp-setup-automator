@@ -37,14 +37,14 @@ unknown
 
 **enum**: the value of this property must be equal to one of the following values:
 
-| Value           | Explanation |
-| :-------------- | :---------- |
-| `"application"` |             |
-| `"standard"`    |             |
+| Value       | Explanation |
+| :---------- | :---------- |
+| `"central"` |             |
+| `"local"`   |             |
 
 ## name
 
-SAP Content Agent service: SAP Content Agent service is a tool for SAP BTP applications offering generic content management operations such as view, export and import content with inter-dependencies and integration with SAP Cloud Transport Management service. It offers a view to track all activities along with logs, status and other information.
+SAP Cloud Management service for SAP BTP: Manage the control plane, account model, and product resources in SAP BTP using supported API interfaces provided by the SAP Cloud Management service for SAP BTP.
 
 `name`
 

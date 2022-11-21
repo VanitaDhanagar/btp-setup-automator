@@ -41,7 +41,7 @@ unknown
 
 ## name
 
-SAP Work Zone: SAP Work Zone centralizes access to relevant business applications, processes, information, and communication in a unified entry point that users can access from any device.
+SAP AppGyver: Low-code / no-code tools from SAP that accelerate SAP business applications development.
 
 `name`
 

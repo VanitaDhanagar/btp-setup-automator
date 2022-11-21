@@ -4,103 +4,101 @@
 
 # parameters Properties
 
-| Property                          | Type     | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                                       |
-| :-------------------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [cosmosDb](#cosmosdb)             | `object` | Optional | cannot be null | [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-cosmosdb-specific-creation-parameters.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/cosmosDb") |
-| [requestMessage](#requestmessage) | `string` | Optional | cannot be null | [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-request-message.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/requestMessage")                 |
-| [resourceId](#resourceid)         | `string` | Required | cannot be null | [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-resource-id.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/resourceId")                         |
-| [subResource](#subresource)       | `string` | Optional | cannot be null | [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-subresource.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/subResource")                        |
+| Property                                      | Type      | Required | Nullable       | Defined by                                                                                                                                                                                                                                                                                                                  |
+| :-------------------------------------------- | :-------- | :------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [businessSystemId](#businesssystemid)         | `string`  | Optional | cannot be null | [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-businesssystemid.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/businessSystemId")         |
+| [enableTenantDeletion](#enabletenantdeletion) | `boolean` | Optional | cannot be null | [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-enabletenantdeletion.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/enableTenantDeletion") |
+| [logSys](#logsys)                             | `string`  | Optional | cannot be null | [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-logsys.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/logSys")                             |
+| [writePermissions](#writepermissions)         | `array`   | Optional | cannot be null | [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-writepermissions.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/writePermissions")         |
 
-## cosmosDb
+## businessSystemId
 
-Specifies CosmosDB-specific creation parameters.
+Name to be displayed in Master Data Orchestration UI. If not provided, a random UUID will be assigned.
 
-`cosmosDb`
-
-*   is optional
-
-*   Type: `object` ([CosmosDB-specific creation parameters](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-cosmosdb-specific-creation-parameters.md))
-
-*   cannot be null
-
-*   defined in: [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-cosmosdb-specific-creation-parameters.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/cosmosDb")
-
-### cosmosDb Type
-
-`object` ([CosmosDB-specific creation parameters](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-cosmosdb-specific-creation-parameters.md))
-
-## requestMessage
-
-Specifies the request message which is displayed to the approver.
-
-`requestMessage`
+`businessSystemId`
 
 *   is optional
 
-*   Type: `string` ([Request Message](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-request-message.md))
+*   Type: `string`
 
 *   cannot be null
 
-*   defined in: [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-request-message.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/requestMessage")
+*   defined in: [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-businesssystemid.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/businessSystemId")
 
-### requestMessage Type
+### businessSystemId Type
 
-`string` ([Request Message](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-request-message.md))
+`string`
 
-### requestMessage Constraints
-
-**maximum length**: the maximum number of characters for this string is: `60`
-
-## resourceId
-
-Specifies the Azure Resource ID of the service for which the private endpoint should be created.
-
-Example: /subscriptions/<subscription>/resourceGroups/<rg>/providers/Microsoft.Network/privateLinkServices/<myPrivateLinkService>
-
-`resourceId`
-
-*   is required
-
-*   Type: `string` ([Resource ID](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-resource-id.md))
-
-*   cannot be null
-
-*   defined in: [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-resource-id.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/resourceId")
-
-### resourceId Type
-
-`string` ([Resource ID](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-resource-id.md))
-
-### resourceId Constraints
-
-**minimum length**: the minimum number of characters for this string is: `1`
+### businessSystemId Constraints
 
 **pattern**: the string must match the following regular expression:&#x20;
 
 ```regexp
-/subscriptions/.+/resourceGroups/.+/providers/.+?/.+?/[^/#?]+
+^.{1,60}$
 ```
 
-[try pattern](https://regexr.com/?expression=%2Fsubscriptions%2F.%2B%2FresourceGroups%2F.%2B%2Fproviders%2F.%2B%3F%2F.%2B%3F%2F%5B%5E%2F%23%3F%5D%2B "try regular expression with regexr.com")
+[try pattern](https://regexr.com/?expression=%5E.%7B1%2C60%7D%24 "try regular expression with regexr.com")
 
-## subResource
+## enableTenantDeletion
 
-Specifies the subresource for a specific Resource ID. Note that subresource is not required for Azure Private Link resources.
+Boolean flag to be set to true for confirming deletion of last service instance for the tenant.
 
-Example: mysqlServer
-
-All supported native Azure services including subresources can be found here: <https://help.sap.com/viewer/product/PRIVATE_LINK/CLOUD/en-US>
-
-`subResource`
+`enableTenantDeletion`
 
 *   is optional
 
-*   Type: `string` ([Subresource](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-subresource.md))
+*   Type: `boolean`
 
 *   cannot be null
 
-*   defined in: [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-subresource.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/subResource")
+*   defined in: [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-enabletenantdeletion.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/enableTenantDeletion")
 
-### subResource Type
+### enableTenantDeletion Type
 
-`string` ([Subresource](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-subresource.md))
+`boolean`
+
+## logSys
+
+The logical system.
+
+`logSys`
+
+*   is optional
+
+*   Type: `string`
+
+*   cannot be null
+
+*   defined in: [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-logsys.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/logSys")
+
+### logSys Type
+
+`string`
+
+### logSys Constraints
+
+**pattern**: the string must match the following regular expression:&#x20;
+
+```regexp
+^.{1,10}$
+```
+
+[try pattern](https://regexr.com/?expression=%5E.%7B1%2C10%7D%24 "try regular expression with regexr.com")
+
+## writePermissions
+
+Array of entities the service instance has write permission for
+
+`writePermissions`
+
+*   is optional
+
+*   Type: `object[]` ([Details](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-writepermissions-items.md))
+
+*   cannot be null
+
+*   defined in: [JSON Schema for BTPSA use case definitions](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-writepermissions.md "undefined#/properties/services/items/allOf/1/then/allOf/82/then/allOf/0/then/properties/parameters/properties/writePermissions")
+
+### writePermissions Type
+
+`object[]` ([Details](btpsa-usecase-properties-services-items-allof-1-then-allof-82-then-allof-0-then-properties-parameters-properties-writepermissions-items.md))

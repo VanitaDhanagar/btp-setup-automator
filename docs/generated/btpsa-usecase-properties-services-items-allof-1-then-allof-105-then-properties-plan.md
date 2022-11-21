@@ -9,5 +9,5 @@ unknown
 | Value             | Explanation |
 | :---------------- | :---------- |
 | `"blocks_of_100"` |             |
+| `"default"`       |             |
 | `"free"`          |             |
-| `"standard"`      |             |

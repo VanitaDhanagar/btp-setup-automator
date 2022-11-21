@@ -11,10 +11,11 @@ unknown
 
 ## plan
 
-service plan >channel< for >hyperledger-fabric< is available in data centers:
+service plan >adaptive-server-enterprise-replication< for >hana-cloud< is available in data centers:
 
-*   {'region': 'eu10', 'name': 'Europe (Frankfurt)'}
-*   {'region': 'us10', 'name': 'US East (VA)'}
+*   {'region': 'ap20', 'name': 'Australia (Sydney) Azure'}
+*   {'region': 'eu20', 'name': 'Europe (Netherlands)'}
+*   {'region': 'us21', 'name': 'US East (VA)'}
 
 `plan`
 

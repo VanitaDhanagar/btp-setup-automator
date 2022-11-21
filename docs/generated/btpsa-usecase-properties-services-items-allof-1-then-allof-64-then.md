@@ -41,7 +41,7 @@ unknown
 
 ## name
 
-Mobile Discovery: Mobile Discovery
+Mobile App Update: Mobile App Update
 
 `name`
 
