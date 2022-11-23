@@ -1,4 +1,4 @@
-# Instructions for running Kyma based multitenant application with day 2 operations
+# Steps for running Kyma based multitenant application with day2 operations using jenkins pipeline
 
 The [btp-setup-automator](https://github.com/SAP-samples/btp-setup-automator) is an open source project to help developers setting-up their SAP BTP accounts quickly via various command line interfaces.
 The current script was designed to setup the account and spin up the application which is used by the Discovery Center Mission, [Extend a Kyma based multitenant application with day 2 operations](https://discovery-center.cloud.sap/missiondetail/3999/4206/).
