@@ -48,7 +48,7 @@ You'll notice that the prompt in your terminal has changed, because you are now 
 ./btpsa -parameterfile 'https://raw.githubusercontent.com/VanitaDhanagar/btp-setup-automator/main/usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json' -globalaccount '93951304-9109-44bc-ac3f-53c3ac8b309b' -myemail 'sap-cf-e2etests@sap.com' -mypassword 'Initial234!'
 ```
 
-> Note: Before the deployment starts you can choose between two options (Mission-start and Mission-end).Please choose the Mission-end option.
+> Note: Before the deployment starts you can choose between two options (Mission-start and Mission-end).Please choose the Mission-end option and further for pop-up Login to kyma with user(sap-cf-e2etests@sap.com) and pass 
 
 The btp-setup-automator script will now prepare your SAP BTP account to cover the discovery center mission. You can have a look at the [usecase.json](https://github.com/VanitaDhanagar/btp-setup-automator/blob/main/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase.json) and [parameters.json](https://github.com/VanitaDhanagar/btp-setup-automator/blob/main/usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json) for more details about the used services and configuration parameters (e.g. DB Password for SAP HANA Cloud).
 
