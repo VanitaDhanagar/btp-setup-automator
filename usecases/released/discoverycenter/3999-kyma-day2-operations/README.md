@@ -32,17 +32,27 @@ The name of the subaccount is preconfigured to "kyma-day2-operation-automation" 
 
 ## Instructions
 
-Open a command line terminal on [Node](https://gkerefappscicd.jaas-gcp.cloud.sap.corp/computer/windowskymanode/) machine.
 
-1. Enter the following command into the terminal and press the `ENTER` key:
+1. **strongly recommended** that you install and setup **MS Visual Studio Code** (VS Code), too:
 
-```bash
+- [Install VS Code](https://code.visualstudio.com/download) - this will be your development environment.
+- Install the VS Code [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension for connecting to and using Docker containers.
+
+2. Open a VS code on [Node](https://gkerefappscicd.jaas-gcp.cloud.sap.corp/computer/windowskymanode/).
+
+3. Run the following command on terminal to pull the Docker image from the GitHub repository and start a container based upon it.
+
+ ```bash
 docker container run --rm -it --name "btp-setup-automator" "ghcr.io/sap-samples/btp-setup-automator:latest"
 ```
+3. you should now see the Docker container up and running.
 
-You'll notice that the prompt in your terminal has changed, because you are now working inside the docker container, that you just started.
+4. open the command palette (Windows: `Ctrl+Shift+P` ; Mac: `Cmd+Shift+P`) and select the `Remote Containers: Attach to Running Container...`
 
-2. Now run the main script `btpsa` with the following command:
+5. Then look for the container by name (`btp-setup-automator`) and selecting it:
+
+
+2. Now run the main script `btpsa` with the following command in conatiner:
 
 ```bash
 ./btpsa -parameterfile 'https://raw.githubusercontent.com/VanitaDhanagar/btp-setup-automator/main/usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json' -globalaccount '93951304-9109-44bc-ac3f-53c3ac8b309b' -myemail 'sap-cf-e2etests@sap.com' -mypassword 'Initial234!'
