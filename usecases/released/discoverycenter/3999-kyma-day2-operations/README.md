@@ -34,8 +34,6 @@ The name of the subaccount is preconfigured to "kyma-day2-operation-automation" 
 
 Open a command line terminal on your machine.
 
-> 📝 Tip - In case you don't know how to do it, here are the instructions for [MS Windows](https://www.wikihow.com/Open-Terminal-in-Windows), [Mac OS](https://www.wikihow.com/Open-a-Terminal-Window-in-Mac) and [Ubuntu Linux](https://www.wikihow.com/Open-a-Terminal-Window-in-Ubuntu).
-
 1. Enter the following command into the terminal and press the `ENTER` key:
 
 ```bash
