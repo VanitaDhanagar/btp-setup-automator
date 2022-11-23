@@ -32,7 +32,7 @@ The name of the subaccount is preconfigured to "kyma-day2-operation-automation" 
 
 ## Instructions
 
-Open a command line terminal on your machine.
+Open a command line terminal on [Node](https://gkerefappscicd.jaas-gcp.cloud.sap.corp/computer/windowskymanode/) machine.
 
 1. Enter the following command into the terminal and press the `ENTER` key:
 
