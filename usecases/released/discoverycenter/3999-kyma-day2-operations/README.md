@@ -33,14 +33,9 @@ The name of the subaccount is preconfigured to "kyma-day2-operation-automation" 
 ## Instructions
 
 
-1. **strongly recommended** that you install and setup **MS Visual Studio Code** (VS Code), too:
+1. Open a VS code on [Node](https://gkerefappscicd.jaas-gcp.cloud.sap.corp/computer/windowskymanode/).
 
-- [Install VS Code](https://code.visualstudio.com/download) - this will be your development environment.
-- Install the VS Code [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension for connecting to and using Docker containers.
-
-2. Open a VS code on [Node](https://gkerefappscicd.jaas-gcp.cloud.sap.corp/computer/windowskymanode/).
-
-3. Run the following command on terminal to pull the Docker image from the GitHub repository and start a container based upon it.
+2. Run the following command on terminal to pull the Docker image from the GitHub repository and start a container based upon it.
 
  ```bash
 docker container run --rm -it --name "btp-setup-automator" "ghcr.io/sap-samples/btp-setup-automator:latest"
@@ -51,8 +46,7 @@ docker container run --rm -it --name "btp-setup-automator" "ghcr.io/sap-samples/
 
 5. Then look for the container by name (`btp-setup-automator`) and selecting it:
 
-
-2. Now run the main script `btpsa` with the following command in conatiner:
+6. Now run the main script `btpsa` with the following command in conatiner:
 
 ```bash
 ./btpsa -parameterfile 'https://raw.githubusercontent.com/VanitaDhanagar/btp-setup-automator/main/usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json' -globalaccount '93951304-9109-44bc-ac3f-53c3ac8b309b' -myemail 'sap-cf-e2etests@sap.com' -mypassword 'Initial234!'
@@ -62,8 +56,8 @@ docker container run --rm -it --name "btp-setup-automator" "ghcr.io/sap-samples/
 
 The btp-setup-automator script will now prepare your SAP BTP account to cover the discovery center mission. You can have a look at the [usecase.json](https://github.com/VanitaDhanagar/btp-setup-automator/blob/main/usecases/released/discoverycenter/3999-kyma-day2-operations/usecase.json) and [parameters.json](https://github.com/VanitaDhanagar/btp-setup-automator/blob/main/usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json) for more details about the used services and configuration parameters (e.g. DB Password for SAP HANA Cloud).
 
-3. On successfull creation subaccounts from btp-setup-automator ,download the kubeconfig file from "kyma-day2-operation-automation" subaccount and upload it to jenkins crendetial id "kubeconfigday2"
+7. On successfull creation subaccounts from btp-setup-automator ,download the kubeconfig file from "kyma-day2-operation-automation" subaccount and upload it to jenkins crendetial id "kubeconfigday2"
 
-4. Run the job :https://gkerefappscicd.jaas-gcp.cloud.sap.corp/job/Kyma_Day2Operations_Factory
+8. Run the job :https://gkerefappscicd.jaas-gcp.cloud.sap.corp/job/Kyma_Day2Operations_Factory
 
-5. Kindly observe on “Delete Kyma-instances and apps“ stage where you have to login to kyma authentication with sap-cf-e2etests@sap.com user on [Node](https://gkerefappscicd.jaas-gcp.cloud.sap.corp/computer/windowskymanode/)
+> Note: Kindly observe on “Delete Kyma-instances and apps“ stage ,if required login to kyma authentication with sap-cf-e2etests@sap.com user on [Node](https://gkerefappscicd.jaas-gcp.cloud.sap.corp/computer/windowskymanode/)
