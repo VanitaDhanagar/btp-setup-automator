@@ -30,9 +30,6 @@ The name of the subaccount is preconfigured to "kyma-day2-operation-automation" 
 ./btpsa -parameterfile 'usecases/released/discoverycenter/3999-kyma-day2-operations/parameters.json' -globalaccount '<your global account subdomain as shown in the SAP BTP cockpit>' -myemail '<your email address>' -region 'region for your subaccount'
 ```
 
-If you want to make changes to the actual [usecase.json](usecase.json) you can either attach Visual Studio Code directly to your running container. Then you can perform the changes (it works as well with the parameters.json) and run the script as described above. You should be aware that the changes are not persisted if you terminate the docker container. In case you need to perform permanent changes to either the usecase.json or the parameter json you need to create your own docker image containing the changes as described [in the documentation](../../../../README.md#option-2-start-docker-container-with-self-built-image) for more details.
-
-
 ## Instructions
 
 Open a command line terminal on your machine.
