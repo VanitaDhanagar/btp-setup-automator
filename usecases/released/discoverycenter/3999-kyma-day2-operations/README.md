@@ -41,6 +41,7 @@ docker container run --rm -it --name "btp-setup-automator" "ghcr.io/sap-samples/
 ```
 
 You'll notice that the prompt in your terminal has changed, because you are now working inside the docker container, that you just started.
+
 2. Now run the main script `btpsa` with the following command:
 
 ```bash
