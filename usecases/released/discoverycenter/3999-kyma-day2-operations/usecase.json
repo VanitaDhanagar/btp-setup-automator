@@ -74,14 +74,7 @@
             ]
         }
     ], 
-     "executeAfterAccountSetup": [                
-        {
-            "description": "Copy metadatfile",
-            "command": "mkdir ${env.WORKSPACE}/jenkinsOut && cp -r /home/user/log/metadata_log.json ${env.WORKSPACE}/jenkinsOut"
-           
-        } 
-       
-    ],
+     
     "assignrolecollections": [
         {
             "name": "Subaccount Administrator",
