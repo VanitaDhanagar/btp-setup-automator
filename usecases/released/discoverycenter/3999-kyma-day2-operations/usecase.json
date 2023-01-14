@@ -77,7 +77,7 @@
       "executeAfterAccountSetup": [                
         {
             "description": "Get the tutorial code",
-            "command": "rm -rf /home/user/tutorial && git clone  https://github.com/VanitaDhanagar/btp-kyma-day2-operations.git /home/user/tutorial"
+            "command": "rm -rf /home/user/tutorial && git clone  https://github.com/SAP-samples/btp-kyma-day2-operations.git /home/user/tutorial"
         },
         {
             "description": "Copy deploymentscript",
